@@ -2,16 +2,16 @@
   <div class="app">
     <div v-if="state.account.mid">안녕하세요? {{state.account.memberName}}님!</div>
     <div v-else>
-      <label for="longinId">
+      <label for="userId">
         <span>아이디</span>
-        <input type="text" id="loginId" v-model="state.form.loginId" />
+        <input type="text" id="userId" v-model="state.form.userId" />
       </label>
-      <label for="longinPw">
+      <label for="userPassword">
         <span>패스워드</span>
-        <input type="password" id="loginPw" v-model="state.form.loginPw" />
+        <input type="password" id="userPassword" v-model="state.form.userPassword" />
       </label>
       <hr />
-      <button @click="submit()">로그인</button>
+      <button @click="submit()" type="button">로그인</button>
     </div>
   </div>
 </template>
@@ -27,15 +27,15 @@ export default {
         memberName: ""
       },
       form:{
-        loginId:"",
-        loginPw:""
+        userId:"",
+        userPassword:""
       },
     });
 
     const submit = () => {
       const args = {
-        loginId: state.form.loginId,
-        loginPw: state.form.loginPw
+        userId: state.form.userId,
+        userPassword: state.form.userPassword
       };
 
       axios.post("/api/account", args).then((res) => {
